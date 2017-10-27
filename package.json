@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/bgryszko/react-native-circular-progress.git"
+    "url": "git+ssh://git@github.com/hlerenow/react-native-percent-circle.git"
   },  
   "keywords": [
     "react",

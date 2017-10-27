@@ -1,6 +1,6 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
-[![Version](https://img.shields.io/npm/v/react-native-circular-progress.svg)](https://www.npmjs.com/package/react-native-perccent-circle)
-[![npm](https://img.shields.io/npm/dt/react-native-circular-progress.svg)](https://www.npmjs.com/package/react-native-perccent-circle)
+[![Version](https://img.shields.io/npm/v/react-native-percent-circle.svg)](https://www.npmjs.com/package/react-native-percent-circle)
+[![npm](https://img.shields.io/npm/dt/react-native-percent-circle.svg)](https://www.npmjs.com/package/react-native-percent-circle)
 
 # react-native-percent-circular
 
@@ -20,7 +20,7 @@ React Native component for creating animated, circular progress with Pure js. Us
 Import CircularProgress or AnimatedCircularProgress.
 
 ```js
-import PercentCircle from 'react-native-percent-progress';
+import PercentCircle from 'react-native-percent-circle';
 ```
 
 Use as follows:

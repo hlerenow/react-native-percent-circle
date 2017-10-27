@@ -13,7 +13,7 @@ React Native component for creating animated, circular progress with Pure js. Us
 
 ## Installation
 
- Install library `npm i --save react-native-percent-progress`
+ Install library  `npm i --save react-native-percent-circle`
 
 ## Usage
 

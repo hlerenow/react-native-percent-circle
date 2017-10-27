@@ -1,0 +1,27 @@
+{
+  "name": "react-native-percent-circle",
+  "version": "0.0.1",
+  "description": "React Native component for creating animated, circular progress with webview canvas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bgryszko/react-native-circular-progress.git"
+  },  
+  "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "progress",
+    "chart",
+    "circle",
+    "percent"
+  ],  
+  "author": {
+    "name:": "hlere",
+    "email": "595806119@qq.com"
+  },
+  "license": "MIT"
+}

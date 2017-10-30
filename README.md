@@ -17,7 +17,7 @@ React Native component for creating animated, circular progress with Pure js. Us
 
 ## Usage
 
-Import CircularProgress or AnimatedCircularProgress.
+Import PercentCircle.
 
 ```js
 import PercentCircle from 'react-native-percent-circle';

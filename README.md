@@ -42,7 +42,7 @@ You can configure the passing by following props:
 - **lineCap** - the shape to be used at the ends of the circle. Possible values:  round or square or none.
 - **fontColor** - the color of font
 - **fontSize** - the size of font (px)
-- **aninationType** - anmationType,exmaple : 'Quad.easeInOut' ,Possible values see tween.js
+- **animationType** - animation types,exmaple: **'Quad.easeInOut'** ,Possible values see tween.js
 
 ## Author
 

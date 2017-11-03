@@ -162,7 +162,7 @@ class PercentCircle extends Component {
       })
     }
     render() {
-        var {percent, radius, frameTime, bgColor, fwColor, lineWidth, duration, fontColor, fontSize, aninationType} = this.props;
+        var {percent, radius, frameTime, bgColor, fwColor, lineWidth, duration, fontColor, fontSize, animationType} = this.props;
         var concatHtml = `${this.state.init}
         var percent = ${percent};
         var r = ${radius} ;
@@ -174,8 +174,8 @@ class PercentCircle extends Component {
         var fontColor = '${fontColor}';
         var fontSize = ${fontSize};
         var Tween = ${Tween};
-        var aninationType = '${aninationType}';
-        var animationArry = aninationType.split('.');
+        var animationType = '${animationType}';
+        var animationArry = animationType.split('.');
         ${this.state.end}`;
 
         return (
@@ -235,7 +235,7 @@ PercentCircle.defaultProps = {
   fontColor: '#fd8320',
   /* 字体大小 */
   fontSize: 60,
-  aninationType: 'Quad.easeInOut'
+  animationType: 'Quad.easeInOut'
 }
 
 module.exports = PercentCircle;

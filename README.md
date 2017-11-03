@@ -26,7 +26,7 @@ import PercentCircle from 'react-native-percent-circle';
 Use as follows:
 
 ```jsx
-  <PercentCircle percent={79} />
+  <PercentCircle percent={79} aninationType="Quad.easeInOut"/>
 ```
 
 ## Configuration
@@ -39,9 +39,10 @@ You can configure the passing by following props:
 - **fwColor** - color of a progress line
 - **bgColor** - color of a background for progress line
 - **duration** - the time of animation
-- **lineCap** - the shape to be used at the ends of the circle. Possible values:  round or square.
+- **lineCap** - the shape to be used at the ends of the circle. Possible values:  round or square or none.
 - **fontColor** - the color of font
 - **fontSize** - the size of font (px)
+- **aninationType** - anmationType,exmaple : 'Quad.easeInOut' ,Possible values see tween.js
 
 ## Author
 

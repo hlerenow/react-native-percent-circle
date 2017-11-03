@@ -7,6 +7,8 @@ import {
     WebView
 } from 'react-native';
 
+import Tween from './tween'
+
 class PercentCircle extends Component {
     constructor(props){
         super(props);
@@ -46,23 +48,22 @@ class PercentCircle extends Component {
                   end: `
                     
                     /* 扩大一倍 */
-                    r = 2*r;
-                    var w = r + 0.2 * r;
-                    var h = r + 0.2 * r;
+                    var w = r * 2 + 20 + lineWidth * 2;
+                    var h = r * 2 + 20 + lineWidth * 2;
 
-                    var center = r + 0.1 * r;
+                    var center = r + 10 + lineWidth;
                     var canvas = document.getElementById('canvas');
-                    canvas.style.width = r;
-                    canvas.style.height = r;
-                    canvas.width = 2 * r + 0.2 * r ;
-                    canvas.height = 2 * r + 0.2 * r;
+                    canvas.style.width = w;
+                    canvas.style.height = w;
+                    canvas.width = w;
+                    canvas.height = h;
 
                     var ctx = canvas.getContext('2d');
-
                     /* 动画持续时间 毫秒 */
 
                     /* 运行时间 */
                     var time = 0;
+                    var startPercent = 0;
 
                     /* 绘制文字 */
                     function drawText (ctx, str) {
@@ -108,8 +109,7 @@ class PercentCircle extends Component {
                       ctx.clearRect(0, 0, w,h);
                       /* 清除画布结束 */  
                       time += frameTime;
-                      ctx.scale(0.5, 0.5);
-                      var tempPercent = parseInt(easeInOut(time, 0, percent * 2 * Math.PI, duration), 10);
+                      var tempPercent = parseInt(Tween[animationArry[0]][animationArry[1]](time, startPercent * 2 * Math.PI , percent * 2 * Math.PI, duration), 10);
                       tempPercent = parseInt(tempPercent/Math.PI/2);
                       if (time >= duration) {
                         tempPercent = percent;
@@ -123,11 +123,31 @@ class PercentCircle extends Component {
                     
                     var handle = setInterval(function () {
                       if (time >= duration) {
-                        clearInterval(drawOneFrame);
-                        return
+                        clearInterval(handle);
+                        startPercent = percent;
+                        return;
                       }
-                      drawOneFrame()
-                    }, frameTime)
+                      drawOneFrame();
+                    }, frameTime);
+                    
+                    /* 更新数据 */
+                    var update = function (newPercent) {
+
+                        if (handle) {
+                          clearInterval(handle);
+                        }
+                        startPercent = percent;
+                        percent = newPercent;
+                        time = 0;
+
+                        handle = setInterval(function () {
+                        if (time >= duration) {
+                          clearInterval(handle);
+                          return
+                        }
+                        drawOneFrame();
+                      }, frameTime);                 
+                    };
 
                   </script>
               </html>
@@ -141,9 +161,8 @@ class PercentCircle extends Component {
             width: e.nativeEvent.layout.width,
       })
     }
-
     render() {
-        var {percent, radius, frameTime, bgColor, fwColor, lineWidth, duration, fontColor, fontSize} = this.props;
+        var {percent, radius, frameTime, bgColor, fwColor, lineWidth, duration, fontColor, fontSize, aninationType} = this.props;
         var concatHtml = `${this.state.init}
         var percent = ${percent};
         var r = ${radius} ;
@@ -154,6 +173,9 @@ class PercentCircle extends Component {
         var duration = ${duration};
         var fontColor = '${fontColor}';
         var fontSize = ${fontSize};
+        var Tween = ${Tween};
+        var aninationType = '${aninationType}';
+        var animationArry = aninationType.split('.');
         ${this.state.end}`;
 
         return (
@@ -161,11 +183,12 @@ class PercentCircle extends Component {
               <WebView
                   onLayout={this.reRenderWebView}
                   style={[styles.wView,{
-                    width: this.props.radius * 2, 
-                    height: this.props.radius * 2,
+                    width: this.props.radius * 2 + lineWidth * 2, 
+                    height: this.props.radius * 2 + lineWidth * 2,
                     backgroundColor:'transparent',
                     overflow: 'hidden'
                   }]}
+                  ref={(w) => this.webview = w}
                   source={{ html: concatHtml}}
                   javaScriptEnabled={true}
                   domStorageEnabled={true}
@@ -211,7 +234,8 @@ PercentCircle.defaultProps = {
   /* 字体颜色 */
   fontColor: '#fd8320',
   /* 字体大小 */
-  fontSize: 60
+  fontSize: 60,
+  aninationType: 'Quad.easeInOut'
 }
 
 module.exports = PercentCircle;
